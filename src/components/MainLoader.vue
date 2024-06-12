@@ -10,6 +10,9 @@ export default {
 </script>
 
 <template>
+    <div class="fs-1 d-flex justify-content-center text-danger">
+        LOADING.................
+    </div>
     <div class="card-wrapper">
         <img class="card" src="../assets/front.jpg" alt="" />
         <img class="card card-back" src="../assets/back.jpg" alt="" />
@@ -20,13 +23,13 @@ export default {
 @keyframes cardFlip {
     0% {
     transform: rotateY(0deg);
-  }
+    }
     50% {
     transform: rotateY(180deg);
-  }
+    }
     100% {
     transform: rotateY(0deg);
-  }
+    }
 }
 
 .card-wrapper {
