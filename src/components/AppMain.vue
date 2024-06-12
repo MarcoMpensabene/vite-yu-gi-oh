@@ -1,15 +1,18 @@
 <script >
 import MainListCard from "./MainListCard.vue";
 import MainSearch from "./MainSearch.vue";
+import MainLoader from "./MainLoader.vue";
 import axios from "axios";
 export default {
     components :{
         MainListCard,
         MainSearch,
+        MainLoader,
     },
     data() {
         return {
             cardsList : [],
+            IsLoaded : false
             }
         },
     methods : {
@@ -24,10 +27,17 @@ export default {
                 })
                 .finally(function () {
                 });
+        },
+        loadInSec(){
+            setTimeout( ()=> {
+                this.IsLoaded = true
+                
+            } , 5000);
         }
     },
     created(){
         this.getCards();
+        this.loadInSec();
     }
 }
 </script>
@@ -35,8 +45,8 @@ export default {
 <template>
     <main >
         <!-- <MainSearch /> -->
-        <MainListCard :cardsList="cardsList" />
-
+        <MainListCard :cardsList="cardsList" v-if="IsLoaded" />
+        <MainLoader v-else />
     </main>
 </template>
 

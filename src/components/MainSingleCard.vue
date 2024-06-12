@@ -7,7 +7,7 @@ export default {
         },
     props :{
         cardsList : {
-            type : Array,
+            type : Object,
             required : true
         }
     }
