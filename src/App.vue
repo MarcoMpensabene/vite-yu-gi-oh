@@ -16,11 +16,17 @@ export default {
 </script>
 
 <template>
-    <AppHeader />
-    <AppMain />
+    <body>
+      <AppHeader  />
+      <AppMain />
+    </body>
+
 </template>
 
 <style lang="scss">
 @use './styles/general.scss';
 @use '../node_modules/bootstrap/scss/bootstrap.scss';
+body{
+    background-color: #d48f38;
+}
 </style>
