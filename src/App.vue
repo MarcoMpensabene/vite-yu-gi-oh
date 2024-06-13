@@ -24,9 +24,7 @@ export default {
 </template>
 
 <style lang="scss">
-@use './styles/general.scss';
 @use '../node_modules/bootstrap/scss/bootstrap.scss';
-body{
-    background-color: #d48f38;
-}
+@use './styles/general.scss';
+
 </style>
