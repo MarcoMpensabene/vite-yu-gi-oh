@@ -13,7 +13,7 @@ export default {
         return {
             cardsList : [],
             IsLoaded : false,
-            typeList :[] ,
+            typeList : [] ,
 
             }
         },
@@ -47,19 +47,32 @@ export default {
                 this.IsLoaded = true
                 
             } , 5000);
-        }
+        },
+        cardsFilter(index){
+            console.log(this.typeList[index].archetype_name)
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype='+ this.typeList[index].archetype_name)
+                .then( (response) => {
+                    console.log(response.data.data);
+                    this.cardsList = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .finally(function () {
+                });
+        },
     },
     created(){
         this.getCards();
         this.loadInSec();
-        this. getTypes();
+        this.getTypes();
     }
 }
 </script>
 
 <template>
     <main >
-        <MainSearch :typeList="typeList"/>
+        <MainSearch :typeList="typeList" @chooseType="cardsFilter"/>
         <MainListCard :cardsList="cardsList" v-if="IsLoaded" />
         <MainLoader v-else />
     </main>
